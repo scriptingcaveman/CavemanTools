@@ -7,7 +7,7 @@ Function Move-EBFile{
 )
 
 Try{
-    Get-ChildItem -Path $SourcePath -Recurse | ForEach-Object {
+    Get-ChildItem -Path $SourcePath -Recurse | ForEach-Object -Parallel -ThrottleLimit 32 {
         Write-Verbose -Message 'Replacing source path with destination path'
         $DestinationFile = $_.FullName -replace [regex]::Escape($SourcePath),$DestinationPath
         $SourceFile = $_.FullName
