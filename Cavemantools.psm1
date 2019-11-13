@@ -68,4 +68,5 @@ Get-ChildItem -Path $SourcePath -Recurse | ForEach-Object {
     
     Write-Verbose -Message "Setting ACL on $DestinationFile"
     Set-ACL -Path $DestinationFile -AclObject $ACL
+    }
 }
